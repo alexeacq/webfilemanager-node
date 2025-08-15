@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web File Manager</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <h1><i class="fas fa-folder"></i> File Manager</h1>
+            <div class="breadcrumb" id="breadcrumb">
+                <span class="breadcrumb-item" data-path="">
+                    <i class="fas fa-home"></i> Root
+                </span>
+            </div>
+        </div>
+        <div class="header-right">
+            <button id="darkModeToggle" class="btn-icon" title="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Directory Tree -->
+            <div class="sidebar-section">
+                <h3><i class="fas fa-sitemap"></i> Directories</h3>
+                <div id="directoryTree" class="directory-tree"></div>
+            </div>
+
+            <!-- Actions -->
+            <div class="sidebar-section" id="actionsSection" style="display: none;">
+                <h3><i class="fas fa-tools"></i> Actions</h3>
+                <div class="action-buttons">
+                    <button id="propertiesBtn" class="btn-action">
+                        <i class="fas fa-info-circle"></i> Properties
+                    </button>
+                    <button id="downloadBtn" class="btn-action">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                    <button id="copyBtn" class="btn-action">
+                        <i class="fas fa-copy"></i> Copy
+                    </button>
+                    <button id="cutBtn" class="btn-action">
+                        <i class="fas fa-cut"></i> Cut
+                    </button>
+                    <button id="pasteBtn" class="btn-action" disabled>
+                        <i class="fas fa-paste"></i> Paste
+                    </button>
+                    <button id="deleteBtn" class="btn-action btn-danger">
+                        <i class="fas fa-trash"></i> Delete
+                    </button>
+                </div>
+            </div>
+
+            <!-- File Operations -->
+            <div class="sidebar-section">
+                <h3><i class="fas fa-plus"></i> Create</h3>
+                <div class="create-buttons">
+                    <button id="newFolderBtn" class="btn-action">
+                        <i class="fas fa-folder-plus"></i> New Folder
+                    </button>
+                    <label for="fileUpload" class="btn-action">
+                        <i class="fas fa-upload"></i> Upload Files
+                    </label>
+                    <input type="file" id="fileUpload" multiple hidden>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="file-grid" id="fileGrid">
+                <!-- Files will be loaded here -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <!-- New Folder Modal -->
+    <div id="newFolderModal" class="modal">
+        <div class="modal-content">
+            <h3>Create New Folder</h3>
+            <input type="text" id="folderNameInput" placeholder="Enter folder name">
+            <div class="modal-buttons">
+                <button id="createFolderBtn" class="btn btn-primary">Create</button>
+                <button id="cancelFolderBtn" class="btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Properties Modal -->
+    <div id="propertiesModal" class="modal">
+        <div class="modal-content">
+            <h3>Properties</h3>
+            <div id="propertiesContent"></div>
+            <div class="modal-buttons">
+                <button id="closePropertiesBtn" class="btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div id="loadingIndicator" class="loading-indicator">
+        <div class="spinner"></div>
+        <span>Loading...</span>
+    </div>
+
+    <!-- Upload Progress -->
+    <div id="uploadProgress" class="upload-progress" style="display: none;">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <span id="progressText">Uploading...</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
