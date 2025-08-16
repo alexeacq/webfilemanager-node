@@ -1,4 +1,4 @@
-# Web file manager for a linux system
+# Web file manager for a linux directories.
 
 ![image alt](https://github.com/alexeacq/webfilemanager-node/blob/main/Screenshot%20from%202025-08-15%2000-37-44.png?raw=true)
 
